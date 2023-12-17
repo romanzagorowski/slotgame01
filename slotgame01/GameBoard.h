@@ -22,9 +22,14 @@ public:
         return symbols[row * cols + col];
     }
 
+    const std::vector<int>& GetSymbols() const
+    {
+        return symbols;
+    }
+
 private:
     const std::size_t cols;
     const std::size_t rows;
 
-    std::vector<int> symbols;
+    const std::vector<int> symbols;
 };

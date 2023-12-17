@@ -39,7 +39,7 @@ public:
         const int& first_symbol = symbols[0];
         const int length = CountPrefixLength(first_symbol, symbols);
 
-        if(auto it = map.find(std::make_pair(first_symbol, length)); it != map.end())
+        if(auto it = map.find(std::make_pair(first_symbol, length)); it != std::end(map))
         {
             const auto& [symbol, length] = it->first;
             const auto& amount = it->second;

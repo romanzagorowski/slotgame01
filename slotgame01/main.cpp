@@ -3,6 +3,9 @@
 #include "CountBasedPrizes.h"
 #include "LengthBasedPrizes.h"
 
+#include "LengthBasedPrizeChecker.h"
+#include "CountBasedPrizeChecker.h"
+
 #include <vector>
 
 int main()

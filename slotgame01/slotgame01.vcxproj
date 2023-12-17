@@ -136,6 +136,7 @@
     <ClInclude Include="BetLine.h" />
     <ClInclude Include="CountBasedPayout.h" />
     <ClInclude Include="CountBasedPrize.h" />
+    <ClInclude Include="CountBasedPrizeChecker.h" />
     <ClInclude Include="CountBasedPrizes.h" />
     <ClInclude Include="FixedSymbolsGenerator.h" />
     <ClInclude Include="GameBoard.h" />
