@@ -26,12 +26,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="board.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="payline_pattern.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BetLines.h">
       <Filter>Header Files</Filter>
     </ClInclude>

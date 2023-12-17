@@ -134,7 +134,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BetLine.h" />
-    <ClInclude Include="board.h" />
     <ClInclude Include="CountBasedPayout.h" />
     <ClInclude Include="CountBasedPrize.h" />
     <ClInclude Include="CountBasedPrizes.h" />
@@ -145,7 +144,6 @@
     <ClInclude Include="LengthBasedPrizes.h" />
     <ClInclude Include="ReelsSymbolsGenerator.h" />
     <ClInclude Include="SlotGameSimulator.h" />
-    <ClInclude Include="payline_pattern.h" />
     <ClInclude Include="BetLines.h" />
     <ClInclude Include="SymbolGenerator.h" />
   </ItemGroup>
