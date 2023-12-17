@@ -50,9 +50,32 @@ public:
         return std::nullopt;
     }
 
+    std::vector<LengthBasedPayout> CheckBetLines(
+        const std::vector<BetLine>& betlines,
+        const GameBoard& board
+    )
+    {
+        std::vector<LengthBasedPayout> payouts;
+
+        for(const auto& betline : betlines)
+        {
+            const auto payout = this->CheckBetLine(betline, board);
+            if(payout)
+            {
+                payouts.push_back(*payout);
+            }
+        }
+
+        return payouts;
+    }
+
 private:
     int CountPrefixLength(int symbol, const std::vector<int>& symbols) const
     {
-        throw "Not impemented yet";
+        int prefix_length = 0;
+
+        for(; prefix_length < symbols.size() && symbols[prefix_length] == symbol; ++prefix_length);
+
+        return prefix_length;
     }
 };
