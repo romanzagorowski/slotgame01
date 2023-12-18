@@ -138,15 +138,20 @@
     <ClInclude Include="CountBasedPrize.h" />
     <ClInclude Include="CountBasedPrizeChecker.h" />
     <ClInclude Include="CountBasedPrizes.h" />
+    <ClInclude Include="FixedProbabilitySymbolGenerator.h" />
+    <ClInclude Include="FixedProbabilitySymbolsGenerator.h" />
     <ClInclude Include="FixedSymbolsGenerator.h" />
     <ClInclude Include="GameBoard.h" />
+    <ClInclude Include="IRandomNumberGenerator.h" />
     <ClInclude Include="LengthBasedPayout.h" />
     <ClInclude Include="LengthBasedPrize.h" />
     <ClInclude Include="LengthBasedPrizes.h" />
+    <ClInclude Include="RandomNumberGenerator.h" />
     <ClInclude Include="RandomSymbolsGenerator.h" />
     <ClInclude Include="ReelsSymbolsGenerator.h" />
     <ClInclude Include="SlotGameSimulator.h" />
     <ClInclude Include="BetLines.h" />
+    <ClInclude Include="SymbolGenerator.h" />
     <ClInclude Include="SymbolsGenerator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

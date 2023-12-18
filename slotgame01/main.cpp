@@ -4,27 +4,13 @@
 #include "LengthBasedPrizes.h"
 
 #include "RandomSymbolsGenerator.h"
+#include "FixedProbabilitySymbolsGenerator.h"
+#include "FixedProbabilitySymbolGenerator.h"
 
 #include <vector>
 #include <iostream>
 
-int main2()
-{
-    const std::vector symbols{ 0,1,2,3,4,5,5,5,5,5,6,6,6,6,6 };
-
-    SlotGameSimulator simulator{
-        5, 3, 
-        betlines, 
-        length_based_prizes,
-        count_based_prizes
-    };
-
-    simulator.Spin(symbols);
-
-    return 0;
-}
-
-std::ostream& operator << (std::ostream& os, const std::vector<int>& v)
+inline std::ostream& operator << (std::ostream& os, const std::vector<int>& v)
 {
     assert(15 == v.size());
 
@@ -56,10 +42,37 @@ std::ostream& operator << (std::ostream& os, const std::vector<int>& v)
     //return os << " }";
 }
 
-int main()
+void f1()
 {
+    const std::vector symbols{ 0,1,2,3,4,5,5,5,5,5,6,6,6,6,6 };
+
+    SlotGameSimulator simulator{
+        5, 3,
+        betlines,
+        length_based_prizes,
+        count_based_prizes
+    };
+
+    //FixedProbabilitySymbolsGenerator generator;
     RandomSymbolsGenerator generator{ 5, 3 };
 
+
+    simulator.Run(
+        10000,
+        generator
+    );
+}
+
+void f2()
+{
+    FixedProbabilitySymbolsGenerator generator{ 5, 3 };
+
     for(int i = 0; i < 10; ++i)
-    std::cout << generator.Generate() << std::endl;
+        std::cout << generator.Generate() << std::endl;
+
+}
+
+int main()
+{
+    f1();
 }

@@ -8,6 +8,7 @@
 #include "SymbolsGenerator.h"
 #include "LengthBasedPrizeChecker.h"
 #include "CountBasedPrizeChecker.h"
+#include "SymbolsGenerator.h"
 
 #include <vector>
 #include <utility>
@@ -30,6 +31,7 @@ public:
     void Spin(const SymbolsGenerator& generator);
 
     void Simulate();
+    void Run(int games, SymbolsGenerator& generator);
 
 private:
 

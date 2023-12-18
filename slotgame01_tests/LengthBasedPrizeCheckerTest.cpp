@@ -1,10 +1,10 @@
-#include "pch.h"
-
 #include "../slotgame01/LengthBasedPrizeChecker.h"
 #include "../slotgame01/BetLines.h"
 #include "../slotgame01/LengthBasedPrizes.h"
 
 #include <algorithm>
+
+#include <gtest/gtest.h>
 
 using namespace ::testing;
 

@@ -1,7 +1,7 @@
-#include "pch.h"
-
 #include "../slotgame01/BetLines.h"
 #include "../slotgame01/GameBoard.h"
+
+#include <gtest/gtest.h>
 
 using namespace ::testing;
 

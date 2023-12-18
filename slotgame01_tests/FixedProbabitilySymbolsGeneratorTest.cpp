@@ -1,4 +1,4 @@
-#include "../slotgame01/RandomSymbolsGenerator.h"
+#include "../slotgame01/FixedProbabilitySymbolsGenerator.h"
 
 #include <algorithm>
 #include <cassert>
@@ -21,25 +21,25 @@ inline std::ostream& operator << (std::ostream& os, const std::vector<int>& v)
     return os;
 }
 
-TEST(RandomSymbolsGeneratorTest, GeneratesSymbolsInRange)
+TEST(FixedProbabilitySymbolsGeneratorTest, GeneratesSymbolsInRange)
 {
-    RandomSymbolsGenerator generator{ 5, 3 };
+    FixedProbabilitySymbolsGenerator generator{ 5, 3 };
 
     for(int i = 0; i < 1000; ++i)
     {
         const std::vector<int> symbols = generator.Generate();
 
         const bool out_of_range = (std::find_if(
-            std::begin(symbols), std::end(symbols),[](const auto& symbol) { return symbol < 0 || symbol > 7; }
+            std::begin(symbols), std::end(symbols), [](const auto& symbol) { return symbol < 0 || symbol > 7; }
         ) != std::end(symbols));
 
         ASSERT_FALSE(out_of_range) << symbols;
     }
 }
 
-TEST(RandomSymbolsGeneratorTest, GeneratesMaxOneZeroPerColumn)
+TEST(FixedProbabilitySymbolsGeneratorTest, GeneratesMaxOneZeroPerColumn)
 {
-    RandomSymbolsGenerator generator{ 5, 3 };
+    FixedProbabilitySymbolsGenerator generator{ 5, 3 };
 
     for(int i = 0; i < 1000; ++i)
     {

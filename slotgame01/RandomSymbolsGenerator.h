@@ -4,7 +4,7 @@
 
 #include <random>
 
-class RandomSymbolsGenerator : SymbolsGenerator
+class RandomSymbolsGenerator : public SymbolsGenerator
 {
     std::random_device rd;
     std::mt19937 rng{ rd() };

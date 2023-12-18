@@ -1,10 +1,10 @@
-#include "pch.h"
-
 #include "../slotgame01/GameBoard.h"
 #include "../slotgame01/CountBasedPrizeChecker.h"
 #include "../slotgame01/CountBasedPrizes.h"
 
 #include "algorithm"
+
+#include <gtest/gtest.h>
 
 TEST(CountBasedPrizeCheckerTest, FindsTheBiggestSymbolSet)
 {
