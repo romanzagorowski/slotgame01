@@ -6,18 +6,12 @@
 #include "CountBasedPayout.h"
 #include "LengthBasedPayout.h"
 #include "SymbolGenerator.h"
+#include "LengthBasedPrizeChecker.h"
+#include "CountBasedPrizeChecker.h"
 
 #include <vector>
 #include <utility>
 #include <map>
-
-//struct LengthBasedPrize
-//{
-//    int length;
-//    int prize;
-//};
-//
-//std::map<int, std::vector<LengthBasedPrize>> m1;
 
 // Co zapewnia, ze korona jest tylko na jednej rolce? Generator symboli dla rolki?
 
@@ -35,14 +29,23 @@ public:
     void Spin(const std::vector<int>& symbols);
     void Spin(const SymbolsGenerator& generator);
 
-    // -- input
+    void Simulate();
 
-    const std::vector<BetLine>& bet_lines;
-    const std::vector<LengthBasedPrize>& length_based_prizes;
-    const std::vector<CountBasedPrize>& count_based_prizes;
+private:
 
     int cols;   // reels
     int rows;
+
+    // -- input
+
+    const std::vector<BetLine>& betlines;
+    const std::vector<LengthBasedPrize>& length_based_prizes;
+    const std::vector<CountBasedPrize>& count_based_prizes;
+
+    // -- checkers
+
+    LengthBasedPrizeChecker lbp_checker;
+    CountBasedPrizeChecker cbp_checker;
 
     // -- outcome
 

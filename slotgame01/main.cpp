@@ -3,9 +3,6 @@
 #include "CountBasedPrizes.h"
 #include "LengthBasedPrizes.h"
 
-#include "LengthBasedPrizeChecker.h"
-#include "CountBasedPrizeChecker.h"
-
 #include <vector>
 
 int main()
@@ -18,4 +15,6 @@ int main()
         length_based_prizes,
         count_based_prizes
     };
+
+    simulator.Spin(symbols);
 }
