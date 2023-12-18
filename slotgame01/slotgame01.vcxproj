@@ -143,10 +143,11 @@
     <ClInclude Include="LengthBasedPayout.h" />
     <ClInclude Include="LengthBasedPrize.h" />
     <ClInclude Include="LengthBasedPrizes.h" />
+    <ClInclude Include="RandomSymbolsGenerator.h" />
     <ClInclude Include="ReelsSymbolsGenerator.h" />
     <ClInclude Include="SlotGameSimulator.h" />
     <ClInclude Include="BetLines.h" />
-    <ClInclude Include="SymbolGenerator.h" />
+    <ClInclude Include="SymbolsGenerator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

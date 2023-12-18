@@ -5,7 +5,7 @@
 #include "CountBasedPrize.h"
 #include "CountBasedPayout.h"
 #include "LengthBasedPayout.h"
-#include "SymbolGenerator.h"
+#include "SymbolsGenerator.h"
 #include "LengthBasedPrizeChecker.h"
 #include "CountBasedPrizeChecker.h"
 

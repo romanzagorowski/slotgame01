@@ -109,6 +109,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="BetLineTest.cpp" />
+    <ClCompile Include="RandomSymbolsGeneratorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\slotgame01\slotgame01.vcxproj">

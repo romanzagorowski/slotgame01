@@ -5,7 +5,7 @@
 class SymbolsGenerator
 {
 public:
-    virtual std::vector<int> Generate() const = 0;
+    virtual std::vector<int> Generate() = 0;
 
 public:
     virtual ~SymbolsGenerator() = default;
