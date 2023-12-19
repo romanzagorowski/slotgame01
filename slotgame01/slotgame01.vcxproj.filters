@@ -56,9 +56,6 @@
     <ClInclude Include="FixedSymbolsGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ReelsSymbolsGenerator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="LengthBasedPrizes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -89,13 +86,19 @@
     <ClInclude Include="ColumnSymbolsGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameSymbolsGeneratorCSG1.h">
+    <ClInclude Include="GameSymbolsGenerator_CSG1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameSymbolsGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameSymbolsGeneratorCSG5.h">
+    <ClInclude Include="GameSymbolsGenerator_CSG5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSymbolsGenerator_Random.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomSymbolGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

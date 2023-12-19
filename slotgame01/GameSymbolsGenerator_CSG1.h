@@ -5,10 +5,10 @@
 
 #include <vector>
 
-class GameSymbolsGeneratorCSG1 : public GameSymbolsGenerator
+class GameSymbolsGenerator_CSG1 : public GameSymbolsGenerator
 {
 public:
-    GameSymbolsGeneratorCSG1(int cols, int rows, ColumnSymbolsGenerator& column_symbols_generator) :
+    GameSymbolsGenerator_CSG1(int cols, int rows, ColumnSymbolsGenerator& column_symbols_generator) :
         cols{ cols },
         rows{ rows },
         column_symbols_generator{ column_symbols_generator }

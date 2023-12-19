@@ -3,10 +3,10 @@
 #include "GameSymbolsGenerator.h"
 #include "ColumnSymbolsGenerator.h"
 
-class GameSymbolsGeneratorCSG5 : public GameSymbolsGenerator
+class GameSymbolsGenerator_CSG5 : public GameSymbolsGenerator
 {
 public:
-    GameSymbolsGeneratorCSG5(int cols, int rows, std::vector<ColumnSymbolsGenerator*> column_symbols_generators) :
+    GameSymbolsGenerator_CSG5(int cols, int rows, std::vector<ColumnSymbolsGenerator*> column_symbols_generators) :
         cols{ cols },
         rows{ rows },
         column_symbols_generators{ column_symbols_generators }

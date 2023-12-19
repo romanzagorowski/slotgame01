@@ -28,19 +28,19 @@ TEST(FixedProbabilitySymbolGeneratorTest, SomeTest)
     std::unique_ptr<RandomNumberGeneratorMock> rng_mock{ std::make_unique<RandomNumberGeneratorMock>() };
 
     EXPECT_CALL(*rng_mock, Generate())
-        .WillOnce(Return(99))   // 4
-        .WillOnce(Return(51))   // 2
-        .WillOnce(Return(29))   // 0
-        .WillOnce(Return(88))   // 3
+        .WillOnce(Return(990))   // 4
+        .WillOnce(Return(510))   // 2
+        .WillOnce(Return(290))   // 0
+        .WillOnce(Return(880))   // 3
         ;
 
     FixedProbabilitySymbolGeneratorTestable generator{
         { 
-            30, //  1 -  30
-            10, // 31 -  40
-            40, // 41 -  80
-            10, // 81 -  90
-            10  // 91 - 100
+            300, //  1 -  30
+            100, // 31 -  40
+            400, // 41 -  80
+            100, // 81 -  90
+            100  // 91 - 100
         },
         std::move(rng_mock)
     };

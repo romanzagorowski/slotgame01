@@ -14,7 +14,7 @@ public:
     FixedProbabilitySymbolGenerator(
         const std::vector<int>& symbol_probabilities
     ) :
-        FixedProbabilitySymbolGenerator{ symbol_probabilities, std::make_unique<RandomNumberGenerator>(1, 100) }
+        FixedProbabilitySymbolGenerator{ symbol_probabilities, std::make_unique<RandomNumberGenerator>(1, 1000) }
     {
     }
 
@@ -26,7 +26,7 @@ protected:
         symbol_probabilities{ symbol_probabilities },
         rng{ std::move(rng) }
     {
-        assert(100 == std::accumulate(std::begin(symbol_probabilities), std::end(symbol_probabilities), 0));
+        assert(1000 == std::accumulate(std::begin(symbol_probabilities), std::end(symbol_probabilities), 0));
     }
 
 public:
@@ -34,7 +34,7 @@ public:
     {
         const int r = rng->Generate();
 
-        int t = 100;
+        int t = 1000;
 
         for(int i = static_cast<int>(symbol_probabilities.size()) - 1; i >= 0; --i)
         {

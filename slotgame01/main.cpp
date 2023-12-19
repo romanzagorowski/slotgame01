@@ -7,8 +7,9 @@
 #include "FixedProbabilitySymbolsGenerator.h"
 #include "FixedProbabilitySymbolGenerator.h"
 #include "ColumnSymbolsGenerator.h"
-#include "GameSymbolsGeneratorCSG1.h"
-#include "GameSymbolsGeneratorCSG5.h"
+#include "GameSymbolsGenerator_CSG1.h"
+#include "GameSymbolsGenerator_CSG5.h"
+#include "GameSymbolsGenerator_Random.h"
 
 #include <vector>
 #include <iostream>
@@ -83,21 +84,25 @@ void f3()
 
     FixedProbabilitySymbolGenerator sg1{
         {
+             1,
+
+            36,
+            11,
+            11,
+            11,
+            
             10,
-            30,
             10,
-            10,
-            10,
-            10,
-            10,
+            
             10
         },
     };
 
     FixedProbabilitySymbolGenerator sg2{
         {
-            10,
-            30,
+             5,
+
+            35,
             10,
             10,
             10,
@@ -109,8 +114,8 @@ void f3()
 
     FixedProbabilitySymbolGenerator sg3{
         {
-            10,
-            30,
+             5,
+            35,
             10,
             10,
             10,
@@ -122,8 +127,8 @@ void f3()
 
     FixedProbabilitySymbolGenerator sg4{
         {
-            10,
-            30,
+             5,
+            35,
             10,
             10,
             10,
@@ -135,8 +140,8 @@ void f3()
 
     FixedProbabilitySymbolGenerator sg5{
         {
-            10,
-            30,
+             5,
+            35,
             10,
             10,
             10,
@@ -152,7 +157,114 @@ void f3()
     ColumnSymbolsGenerator cg4{ 3, sg4 };
     ColumnSymbolsGenerator cg5{ 3, sg5 };
 
-    GameSymbolsGeneratorCSG5 gsg{ 5, 3, 
+    GameSymbolsGenerator_CSG5 gsg{ 5, 3, 
+        {&cg1, &cg2, &cg3, &cg4, &cg5 }
+    };
+
+    simulator.Run(
+        100000,
+        gsg
+    );
+}
+
+void f4()
+{
+    SlotGameSimulator simulator{
+        5, 3,
+        betlines,
+        length_based_prizes,
+        count_based_prizes
+    };
+
+    GameSymbolsGenerator_Random gsg{ 5, 3, 8 };
+
+    simulator.Run(
+        100000,
+        gsg
+    );
+}
+
+void f5()
+{
+    SlotGameSimulator simulator{
+        5, 3,
+        betlines,
+        length_based_prizes,
+        count_based_prizes
+    };
+
+    FixedProbabilitySymbolGenerator sg1{
+        {
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+        },
+    };
+
+    FixedProbabilitySymbolGenerator sg2{
+        {
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+        },
+    };
+
+    FixedProbabilitySymbolGenerator sg3{
+        {
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+        },
+    };
+
+    FixedProbabilitySymbolGenerator sg4{
+        {
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+        },
+    };
+
+    FixedProbabilitySymbolGenerator sg5{
+        {
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+        },
+    };
+
+    ColumnSymbolsGenerator cg1{ 3, sg1 };
+    ColumnSymbolsGenerator cg2{ 3, sg2 };
+    ColumnSymbolsGenerator cg3{ 3, sg3 };
+    ColumnSymbolsGenerator cg4{ 3, sg4 };
+    ColumnSymbolsGenerator cg5{ 3, sg5 };
+
+    GameSymbolsGenerator_CSG5 gsg{ 5, 3,
         {&cg1, &cg2, &cg3, &cg4, &cg5 }
     };
 
@@ -164,5 +276,5 @@ void f3()
 
 int main()
 {
-    f3();
+    f4();
 }
