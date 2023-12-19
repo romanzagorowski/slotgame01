@@ -3,8 +3,6 @@
 #include "CountBasedPrizes.h"
 #include "LengthBasedPrizes.h"
 
-#include "RandomSymbolsGenerator.h"
-#include "FixedProbabilitySymbolsGenerator.h"
 #include "FixedProbabilitySymbolGenerator.h"
 #include "ColumnSymbolsGenerator.h"
 #include "GameSymbolsGenerator_CSG1.h"
@@ -44,33 +42,6 @@ inline std::ostream& operator << (std::ostream& os, const std::vector<int>& v)
     //}
 
     //return os << " }";
-}
-
-void f1()
-{
-
-    SlotGameSimulator simulator{
-        5, 3,
-        betlines,
-        length_based_prizes,
-        count_based_prizes
-    };
-
-    RandomSymbolsGenerator generator{ 5, 3 };
-
-    simulator.Run(
-        10000,
-        generator
-    );
-}
-
-void f2()
-{
-    FixedProbabilitySymbolsGenerator generator{ 5, 3 };
-
-    for(int i = 0; i < 10; ++i)
-        std::cout << generator.Generate() << std::endl;
-
 }
 
 void f3()

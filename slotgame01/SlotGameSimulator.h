@@ -5,10 +5,8 @@
 #include "CountBasedPrize.h"
 #include "CountBasedPayout.h"
 #include "LengthBasedPayout.h"
-#include "SymbolsGenerator.h"
 #include "LengthBasedPrizeChecker.h"
 #include "CountBasedPrizeChecker.h"
-#include "SymbolsGenerator.h"
 #include "GameSymbolsGenerator.h"
 
 #include <vector>
@@ -28,11 +26,7 @@ public:
         const std::vector<CountBasedPrize>& count_based_prizes
     );
 
-    void Spin(const std::vector<int>& symbols);
-    void Spin(const SymbolsGenerator& generator);
-
     void Simulate();
-    void Run(int games, SymbolsGenerator& generator);
     void Run(int games, GameSymbolsGenerator& generator);
 
 private:

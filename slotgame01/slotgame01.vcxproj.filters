@@ -50,12 +50,6 @@
     <ClInclude Include="CountBasedPayout.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SymbolsGenerator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FixedSymbolsGenerator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="LengthBasedPrizes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -63,12 +57,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CountBasedPrizeChecker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomSymbolsGenerator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FixedProbabilitySymbolsGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SymbolGenerator.h">
