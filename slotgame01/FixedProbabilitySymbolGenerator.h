@@ -1,7 +1,7 @@
 #pragma once
 
 #include "SymbolGenerator.h"
-#include "RandomNumberGenerator.h"
+#include "StdRandomNumberGenerator.h"
 
 #include <vector>
 #include <numeric>
@@ -14,14 +14,14 @@ public:
     FixedProbabilitySymbolGenerator(
         const std::vector<int>& symbol_probabilities
     ) :
-        FixedProbabilitySymbolGenerator{ symbol_probabilities, std::make_unique<RandomNumberGenerator>(1, 1000) }
+        FixedProbabilitySymbolGenerator{ symbol_probabilities, std::make_unique<StdRandomNumberGenerator>(1, 1000) }
     {
     }
 
 protected:
     FixedProbabilitySymbolGenerator(
         const std::vector<int>& symbol_probabilities,
-        std::unique_ptr<IRandomNumberGenerator> rng
+        std::unique_ptr<RandomNumberGenerator> rng
     ) :
         symbol_probabilities{ symbol_probabilities },
         rng{ std::move(rng) }
@@ -54,5 +54,5 @@ public:
 
 private:
     const std::vector<int> symbol_probabilities;
-    std::unique_ptr<IRandomNumberGenerator> rng;
+    std::unique_ptr<RandomNumberGenerator> rng;
 };

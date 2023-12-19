@@ -65,10 +65,10 @@
     <ClInclude Include="FixedProbabilitySymbolGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RandomNumberGenerator.h">
+    <ClInclude Include="StdRandomNumberGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IRandomNumberGenerator.h">
+    <ClInclude Include="RandomNumberGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ColumnSymbolsGenerator.h">

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "SymbolGenerator.h"
-#include "RandomNumberGenerator.h"
+#include "StdRandomNumberGenerator.h"
 
 class RandomSymbolGenerator : public SymbolGenerator
 {
@@ -17,5 +17,5 @@ public:
         return rng.Generate();
     }
 
-    RandomNumberGenerator rng;
+    StdRandomNumberGenerator rng;
 };

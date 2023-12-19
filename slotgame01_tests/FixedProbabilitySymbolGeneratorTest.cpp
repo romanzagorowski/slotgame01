@@ -1,9 +1,9 @@
-#include "../slotgame01/IRandomNumberGenerator.h"
+#include "../slotgame01/RandomNumberGenerator.h"
 #include "../slotgame01/FixedProbabilitySymbolGenerator.h"
 
 #include <gmock/gmock.h>
 
-class RandomNumberGeneratorMock : public IRandomNumberGenerator
+class RandomNumberGeneratorMock : public RandomNumberGenerator
 {
 public:
     MOCK_METHOD(int, Generate, (), (override));
@@ -16,7 +16,7 @@ class FixedProbabilitySymbolGeneratorTestable : public FixedProbabilitySymbolGen
 public:
     FixedProbabilitySymbolGeneratorTestable(
         const std::vector<int>& symbol_probabilities,
-        std::unique_ptr<IRandomNumberGenerator> rng
+        std::unique_ptr<RandomNumberGenerator> rng
     ) :
         FixedProbabilitySymbolGenerator{ symbol_probabilities, std::move(rng) }
     {
