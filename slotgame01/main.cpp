@@ -9,6 +9,9 @@
 #include "GameSymbolsGenerator_CSG5.h"
 #include "GameSymbolsGenerator_Random.h"
 
+#include "SymbolProbabilities07.h"
+using namespace SymbolProbabilities07;
+
 #include <vector>
 #include <iostream>
 
@@ -165,68 +168,23 @@ void f5()
     };
 
     FixedProbabilitySymbolGenerator sg1{
-        {
-            125,
-            125,
-            125,
-            125,
-            125,
-            125,
-            125,
-            125,
-        },
+        sp1
     };
 
     FixedProbabilitySymbolGenerator sg2{
-        {
-            125,
-            125,
-            125,
-            125,
-            125,
-            125,
-            125,
-            125,
-        },
+        sp2
     };
 
     FixedProbabilitySymbolGenerator sg3{
-        {
-            125,
-            125,
-            125,
-            125,
-            125,
-            125,
-            125,
-            125,
-        },
+        sp3
     };
 
     FixedProbabilitySymbolGenerator sg4{
-        {
-            125,
-            125,
-            125,
-            125,
-            125,
-            125,
-            125,
-            125,
-        },
+        sp1
     };
 
     FixedProbabilitySymbolGenerator sg5{
-        {
-            125,
-            125,
-            125,
-            125,
-            125,
-            125,
-            125,
-            125,
-        },
+        sp1
     };
 
     ColumnSymbolsGenerator cg1{ 3, sg1 };
@@ -240,12 +198,12 @@ void f5()
     };
 
     simulator.Run(
-        100000,
+        9000000,
         gsg
     );
 }
 
 int main()
 {
-    f4();
+    f5();
 }
