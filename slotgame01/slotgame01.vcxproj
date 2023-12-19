@@ -138,10 +138,14 @@
     <ClInclude Include="CountBasedPrize.h" />
     <ClInclude Include="CountBasedPrizeChecker.h" />
     <ClInclude Include="CountBasedPrizes.h" />
+    <ClInclude Include="ColumnSymbolsGenerator.h" />
     <ClInclude Include="FixedProbabilitySymbolGenerator.h" />
     <ClInclude Include="FixedProbabilitySymbolsGenerator.h" />
     <ClInclude Include="FixedSymbolsGenerator.h" />
     <ClInclude Include="GameBoard.h" />
+    <ClInclude Include="GameSymbolsGeneratorCSG1.h" />
+    <ClInclude Include="GameSymbolsGenerator.h" />
+    <ClInclude Include="GameSymbolsGeneratorCSG5.h" />
     <ClInclude Include="IRandomNumberGenerator.h" />
     <ClInclude Include="LengthBasedPayout.h" />
     <ClInclude Include="LengthBasedPrize.h" />

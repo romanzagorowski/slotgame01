@@ -6,6 +6,9 @@
 #include "RandomSymbolsGenerator.h"
 #include "FixedProbabilitySymbolsGenerator.h"
 #include "FixedProbabilitySymbolGenerator.h"
+#include "ColumnSymbolsGenerator.h"
+#include "GameSymbolsGeneratorCSG1.h"
+#include "GameSymbolsGeneratorCSG5.h"
 
 #include <vector>
 #include <iostream>
@@ -44,7 +47,6 @@ inline std::ostream& operator << (std::ostream& os, const std::vector<int>& v)
 
 void f1()
 {
-    const std::vector symbols{ 0,1,2,3,4,5,5,5,5,5,6,6,6,6,6 };
 
     SlotGameSimulator simulator{
         5, 3,
@@ -53,9 +55,7 @@ void f1()
         count_based_prizes
     };
 
-    //FixedProbabilitySymbolsGenerator generator;
     RandomSymbolsGenerator generator{ 5, 3 };
-
 
     simulator.Run(
         10000,
@@ -72,7 +72,97 @@ void f2()
 
 }
 
+void f3()
+{
+    SlotGameSimulator simulator{
+        5, 3,
+        betlines,
+        length_based_prizes,
+        count_based_prizes
+    };
+
+    FixedProbabilitySymbolGenerator sg1{
+        {
+            10,
+            30,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+        },
+    };
+
+    FixedProbabilitySymbolGenerator sg2{
+        {
+            10,
+            30,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+        },
+    };
+
+    FixedProbabilitySymbolGenerator sg3{
+        {
+            10,
+            30,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+        },
+    };
+
+    FixedProbabilitySymbolGenerator sg4{
+        {
+            10,
+            30,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+        },
+    };
+
+    FixedProbabilitySymbolGenerator sg5{
+        {
+            10,
+            30,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+        },
+    };
+
+    ColumnSymbolsGenerator cg1{ 3, sg1 };
+    ColumnSymbolsGenerator cg2{ 3, sg2 };
+    ColumnSymbolsGenerator cg3{ 3, sg3 };
+    ColumnSymbolsGenerator cg4{ 3, sg4 };
+    ColumnSymbolsGenerator cg5{ 3, sg5 };
+
+    GameSymbolsGeneratorCSG5 gsg{ 5, 3, 
+        {&cg1, &cg2, &cg3, &cg4, &cg5 }
+    };
+
+    simulator.Run(
+        100000,
+        gsg
+    );
+}
+
 int main()
 {
-    f1();
+    f3();
 }
