@@ -180,11 +180,11 @@ void f5()
     };
 
     FixedProbabilitySymbolGenerator sg4{
-        sp1
+        sp4
     };
 
     FixedProbabilitySymbolGenerator sg5{
-        sp1
+        sp5
     };
 
     ColumnSymbolsGenerator cg1{ 3, sg1 };
@@ -198,7 +198,7 @@ void f5()
     };
 
     simulator.Run(
-        9000000,
+        9999999,
         gsg
     );
 }

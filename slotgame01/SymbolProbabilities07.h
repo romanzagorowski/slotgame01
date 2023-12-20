@@ -53,23 +53,38 @@ namespace SymbolProbabilities07
 
          75,
     };
-/*
+
     const std::vector<int>& sp4
     {
          50,
 
-        215,
+        175,
 
-        150,
-        150,
-        150,
+        160,
+        165,
+        165,
 
         105,
         105,
 
          75,
     };
-*/
+
+    const std::vector<int>& sp5
+    {
+         50,
+
+        175,
+
+        160,
+        165,
+        165,
+
+        105,
+        105,
+
+         75,
+    };
 }
 
 /*
