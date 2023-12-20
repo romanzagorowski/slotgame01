@@ -19,8 +19,12 @@ public:
     SimulationData(
         const std::vector<BetLine>& betlines,
         const std::vector<LengthBasedPrize>& length_based_prizes,
-        const std::vector<CountBasedPrize>& count_based_prizes
-    )
+        const std::vector<CountBasedPrize>& count_based_prizes,
+        int games_count,
+        int start_credit,
+        int bet_amount
+    ) :
+        bet_amount{ bet_amount }
     {
         for(const auto& betline : betlines)
         {
@@ -36,6 +40,9 @@ public:
         {
             symbol_count_hits[std::make_pair(prize.symbol, prize.count)] = std::make_pair(0, 0);
         }
+
+        balance_history.reserve(games_count + 1);
+        balance_history.push_back(start_credit);
     }
 
 public:
@@ -51,15 +58,22 @@ public:
             won_games++;
         }
 
+        int length_based_payout_amount = 0;
+
         for(const auto& payout : length_based_payouts)
         {
-            total_payout_amount += payout.amount;
+            length_based_payout_amount += payout.amount;
         }
+
+        int count_based_payout_amount = 0;
 
         for(const auto& payout : count_based_payouts)
         {
-            total_payout_amount += payout.amount;
+            count_based_payout_amount += payout.amount;
         }
+
+        total_payout_amount += length_based_payout_amount;
+        total_payout_amount += count_based_payout_amount;
 
         for(const auto& payout : length_based_payouts)
         {
@@ -81,6 +95,15 @@ public:
             hit_count += 1;
             amount += payout.amount;
         }
+
+        // update balance history
+        {
+            int last_balance = balance_history.back();
+            last_balance -= bet_amount;
+            last_balance += length_based_payout_amount;
+            last_balance += count_based_payout_amount;
+            balance_history.push_back(last_balance);
+        }
     }
 
 public:
@@ -91,4 +114,7 @@ public:
     int games_count{ 0 };
     int won_games{ 0 };
     int total_payout_amount{ 0 };
+
+    std::vector<int> balance_history;
+    const int bet_amount;
 };

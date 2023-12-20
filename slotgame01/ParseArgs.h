@@ -59,7 +59,7 @@ inline bool ParseIntArg(int argc, char* argv[], const char* arg_name, int& arg_v
 
     if(arg_index == -1)
     {
-        return false;
+        return true;    // not found but ok
     }
 
     const int arg_value_index = arg_index + 1;
@@ -120,6 +120,11 @@ inline bool ParseSymbolsArg(int argc, char* argv[], std::vector<int>& symbols)
     if(!ParseStringArg(argc, argv, "-symbols", s))
     {
         return false;
+    }
+
+    if(s.empty())   // not found but ok
+    {
+        return true;
     }
 
     if(!ValidateSymbolsString(s))

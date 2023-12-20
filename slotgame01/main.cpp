@@ -2,34 +2,91 @@
 #include "BetLines.h"
 #include "CountBasedPrizes.h"
 #include "LengthBasedPrizes.h"
-
 #include "FixedProbabilitySymbolGenerator.h"
 #include "ReelSymbolsGenerator.h"
 #include "GameSymbolsGenerator_RSG5.h"
 #include "GameSymbolsGenerator_Const.h"
-
 #include "ParseArgs.h"
 #include "SimulationData.h"
-
 #include "SymbolProbabilities.h"
 
 #include <vector>
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <fstream>
 
 namespace
 {
     constexpr int kGameReels = 5;
     constexpr int kGameRows = 3;
+    constexpr int kBetAmount = 100;
 }
 
+// Forward declarations
+
+void OutputBalanceHistory(const std::vector<int>& balance_history, const std::string& output_file);
+void OutputSimulationReport(const SimulationData& data);
+void RunOneGameSimulation(const std::vector<int>& game_symbols);
+void RunMultipleGamesSimulation(int games_count, int start_credit, const std::string& credit_out_file);
+
+int main(int argc, char* argv[])
+{
+    int games_count{ 100000 };      // defaults to   100 000
+    int start_credit{ 5000000 };    // defaults to 5 000 000
+    std::string credit_out_file{};
+    std::vector<int> symbols;
+
+    const bool args_parsed = ParseArgs(
+        argc, argv,
+        games_count,
+        start_credit,
+        credit_out_file,
+        symbols
+    );
+
+    if(!args_parsed)
+    {
+        return -1;
+    }
+
+    if(!symbols.empty())
+    {
+        RunOneGameSimulation(symbols);
+    }
+    else
+    {
+        RunMultipleGamesSimulation(games_count, start_credit, credit_out_file);
+    }
+
+    return 0;
+}
+
+static
+void OutputBalanceHistory(const std::vector<int>& balance_history, const std::string& output_file)
+{
+    std::ofstream stream{ output_file };
+
+    if(!stream)
+    {
+        std::cerr << "ERROR: Failed to open file '" << output_file << "' for writing." << std::endl;
+        
+        return;
+    }
+
+    for(const int balance : balance_history)
+    {
+        stream << balance << std::endl;
+    }
+}
+
+static
 void OutputSimulationReport(const SimulationData& data)
 {
 
     const double hf = 100.0 * data.won_games / data.games_count;
-    const int bet_amount = 100 * data.games_count;
-    const double rtp = 100.0 * data.total_payout_amount / bet_amount;
+    const int total_bet_amount = data.bet_amount * data.games_count;
+    const double rtp = 100.0 * data.total_payout_amount / total_bet_amount;
 
     std::cout << std::setprecision(2) << std::fixed;
 
@@ -37,8 +94,9 @@ void OutputSimulationReport(const SimulationData& data)
     std::cout << "won_games: " << data.won_games << std::endl;
     std::cout << "hf: " << hf << std::endl;
     std::cout << "total_payout_amount: " << data.total_payout_amount << std::endl;
-    std::cout << "bet_amount: " << bet_amount << std::endl;
+    std::cout << "total_bet_amount: " << total_bet_amount << std::endl;
     std::cout << "rtp: " << rtp << std::endl;
+    std::cout << std::endl;
 
     //-- betline
 
@@ -53,10 +111,10 @@ void OutputSimulationReport(const SimulationData& data)
     {
         const double hit_count_percent = 100.0 * hit_count / total_betline_hit_count;
 
-        std::cout 
-            << "betline: " << std::setw(2) << betline 
-            << ", hit_count: " << hit_count 
-            << ", hit_count %: " << hit_count_percent 
+        std::cout
+            << "betline: " << std::setw(2) << betline
+            << ", hit_count: " << hit_count
+            << ", hit_count %: " << hit_count_percent
             << std::endl;
     }
 
@@ -122,7 +180,7 @@ void OutputSimulationReport(const SimulationData& data)
         const double hit_count_percent = 100.0 * hit_count / total_symbol_count_hit_count;
         const double amount_percent = 100.0 * amount / total_symbol_count_amount;
         const double total_amount_percent = 100.0 * amount / data.total_payout_amount;
-        const int cost = 100 * hit_count;
+        const int cost = data.bet_amount * hit_count;
         const int profit = amount - cost;
 
         std::cout
@@ -139,6 +197,7 @@ void OutputSimulationReport(const SimulationData& data)
     }
 }
 
+static
 void RunOneGameSimulation(const std::vector<int>& game_symbols)
 {
     SlotGameSimulator simulator{
@@ -157,6 +216,7 @@ void RunOneGameSimulation(const std::vector<int>& game_symbols)
     std::cout << payout << std::endl;
 }
 
+static
 void RunMultipleGamesSimulation(
     int games_count,
     int start_credit,
@@ -201,7 +261,10 @@ void RunMultipleGamesSimulation(
     SimulationData simulation_data{
         ___betlines,
         ___length_based_prizes,
-        ___count_based_prizes
+        ___count_based_prizes,
+        games_count,
+        start_credit,
+        kBetAmount
     };
 
     simulator.RunMultipleGames(
@@ -211,36 +274,9 @@ void RunMultipleGamesSimulation(
     );
 
     OutputSimulationReport(simulation_data);
-}
 
-int main(int argc, char* argv[])
-{
-    int games_count{ 1000000 };
-    int start_credit{ 5000000 };
-    std::string credit_out_file{};
-    std::vector<int> symbols;
-
-    const bool args_parsed = ParseArgs(
-        argc, argv,
-        games_count,
-        start_credit,
-        credit_out_file,
-        symbols
-    );
-
-    if(!args_parsed)
+    if(!credit_out_file.empty())
     {
-        return -1;
+        OutputBalanceHistory(simulation_data.balance_history, credit_out_file);
     }
-
-    if(!symbols.empty())
-    {
-        RunOneGameSimulation(symbols);
-    }
-    else
-    {
-        RunMultipleGamesSimulation(games_count, start_credit, credit_out_file);
-    }
-
-    return 0;
 }
