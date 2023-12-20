@@ -215,8 +215,7 @@ void RunMultipleGamesSimulation(
 
 int main(int argc, char* argv[])
 {
-    //int games_count{ 1000000 };
-    int games_count{ 9999999 };
+    int games_count{ 1000000 };
     int start_credit{ 5000000 };
     std::string credit_out_file{};
     std::vector<int> symbols;

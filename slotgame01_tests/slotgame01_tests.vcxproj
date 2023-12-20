@@ -110,6 +110,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ParsArgsTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\slotgame01\slotgame01.vcxproj">
