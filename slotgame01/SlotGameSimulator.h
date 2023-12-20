@@ -8,6 +8,7 @@
 #include "LengthBasedPrizeChecker.h"
 #include "CountBasedPrizeChecker.h"
 #include "GameSymbolsGenerator.h"
+#include "SimulationData.h"
 
 #include <vector>
 #include <utility>
@@ -19,19 +20,19 @@ class SlotGameSimulator
 {
 public:
     SlotGameSimulator(
-        const int cols,
+        const int reels,
         const int rows,
         const std::vector<BetLine>& betlines,
         const std::vector<LengthBasedPrize>& length_based_prizes,
         const std::vector<CountBasedPrize>& count_based_prizes
     );
 
-    void Simulate();
-    void Run(int games, GameSymbolsGenerator& generator);
+    void RunMultipleGames(int games_count, GameSymbolsGenerator& generator, SimulationData& data);
+    int RunOneGame(GameSymbolsGenerator& generator);
 
 private:
 
-    int cols;   // reels
+    int reels;
     int rows;
 
     // -- input

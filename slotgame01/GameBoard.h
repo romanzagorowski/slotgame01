@@ -6,7 +6,7 @@
 class GameBoard
 {
 public:
-    GameBoard(std::size_t cols, std::size_t rows, const std::vector<int>& symbols) :
+    GameBoard(int cols, int rows, const std::vector<int>& symbols) :
         cols{ cols },
         rows{ rows },
         symbols{ symbols }
@@ -28,8 +28,8 @@ public:
     }
 
 private:
-    const std::size_t cols;
-    const std::size_t rows;
+    const int cols;
+    const int rows;
 
     const std::vector<int> symbols;
 };

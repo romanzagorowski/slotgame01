@@ -129,26 +129,30 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ParseArgs.cpp" />
     <ClCompile Include="SlotGameSimulator.cpp" />
     <ClCompile Include="LengthBasedPrizeChecker.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BetLine.h" />
+    <ClInclude Include="GameSymbolsGenerator_Const.h" />
     <ClInclude Include="CountBasedPayout.h" />
     <ClInclude Include="CountBasedPrize.h" />
     <ClInclude Include="CountBasedPrizeChecker.h" />
     <ClInclude Include="CountBasedPrizes.h" />
-    <ClInclude Include="ColumnSymbolsGenerator.h" />
+    <ClInclude Include="ReelSymbolsGenerator.h" />
     <ClInclude Include="FixedProbabilitySymbolGenerator.h" />
     <ClInclude Include="GameBoard.h" />
-    <ClInclude Include="GameSymbolsGenerator_CSG1.h" />
+    <ClInclude Include="GameSymbolsGenerator_RSG1.h" />
     <ClInclude Include="GameSymbolsGenerator.h" />
-    <ClInclude Include="GameSymbolsGenerator_CSG5.h" />
+    <ClInclude Include="GameSymbolsGenerator_RSG5.h" />
     <ClInclude Include="GameSymbolsGenerator_Random.h" />
+    <ClInclude Include="ParseArgs.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
     <ClInclude Include="LengthBasedPayout.h" />
     <ClInclude Include="LengthBasedPrize.h" />
     <ClInclude Include="LengthBasedPrizes.h" />
+    <ClInclude Include="SimulationData.h" />
     <ClInclude Include="StdRandomNumberGenerator.h" />
     <ClInclude Include="RandomSymbolGenerator.h" />
     <ClInclude Include="SlotGameSimulator.h" />

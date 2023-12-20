@@ -4,14 +4,13 @@
 
 #include <vector>
 
-class ColumnSymbolsGenerator
+class ReelSymbolsGenerator
 {
 public:
-    ColumnSymbolsGenerator(int width, SymbolGenerator& symbol_generator) :
-        width{ width },
+    ReelSymbolsGenerator(int rows, SymbolGenerator& symbol_generator) :
+        rows{ rows },
         symbol_generator{ symbol_generator }
     {
-
     }
 
     std::vector<int> GenerateSymbols()
@@ -20,7 +19,7 @@ public:
 
         bool has_symbol_0 = false;
 
-        for(int i = 0; i < this->width; ++i)
+        for(int i = 0; i < rows; ++i)
         {
             int symbol = symbol_generator.GenerateSymbol();
 
@@ -38,6 +37,6 @@ public:
     }
 
 private:
-    const int width;
+    const int rows;
     SymbolGenerator& symbol_generator;
 };

@@ -24,6 +24,9 @@
     <ClCompile Include="LengthBasedPrizeChecker.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="ParseArgs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BetLines.h">
@@ -71,16 +74,16 @@
     <ClInclude Include="RandomNumberGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ColumnSymbolsGenerator.h">
+    <ClInclude Include="ReelSymbolsGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameSymbolsGenerator_CSG1.h">
+    <ClInclude Include="GameSymbolsGenerator_RSG1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameSymbolsGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameSymbolsGenerator_CSG5.h">
+    <ClInclude Include="GameSymbolsGenerator_RSG5.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameSymbolsGenerator_Random.h">
@@ -111,6 +114,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SymbolProbabilities07.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ParseArgs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSymbolsGenerator_Const.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SimulationData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

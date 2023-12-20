@@ -2,7 +2,7 @@
 
 #include "GameSymbolsGenerator.h"
 #include "RandomSymbolGenerator.h"
-#include "ColumnSymbolsGenerator.h"
+#include "ReelSymbolsGenerator.h"
 
 class GameSymbolsGenerator_Random : public GameSymbolsGenerator
 {
@@ -38,5 +38,5 @@ private:
     const int rows;
 
     RandomSymbolGenerator symbol_generator;
-    ColumnSymbolsGenerator column_symbols_generator;
+    ReelSymbolsGenerator column_symbols_generator;
 };
