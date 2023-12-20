@@ -142,5 +142,10 @@ inline bool ParseArgs(int argc, char* argv[],
     std::vector<int>& symbols
 )
 {
-    return true;
+    return 
+        ParseGamesCountArg(argc, argv, games_count) &&
+        ParseStartCreditArg(argc, argv, start_credit) &&
+        ParseCreditOutFileArg(argc, argv, credit_out_file) &&
+        ParseSymbolsArg(argc, argv, symbols)
+        ;
 }
