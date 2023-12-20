@@ -3,6 +3,9 @@
 #include <vector>
 #include <cassert>
 
+// Represents a game board with 'cols' columns (reels) and 'rows' rows.
+// Returns a symbol at the sprcific cross of a column and a row or all symbols as a vector.
+
 class GameBoard
 {
 public:

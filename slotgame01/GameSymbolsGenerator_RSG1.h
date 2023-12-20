@@ -5,6 +5,9 @@
 
 #include <vector>
 
+// The game symbol generator with one reel symbol generator for all reels.
+// Not used in the project. Used to be...
+
 class GameSymbolsGenerator_RSG1 : public GameSymbolsGenerator
 {
 public:
@@ -20,13 +23,13 @@ public:
     {
         std::vector<int> symbols(rows * reels, -1);
 
-        for(std::size_t c = 0; c < reels; ++c)
+        for(std::size_t reel = 0; reel < reels; ++reel)
         {
             const std::vector<int> column_symbols = reel_symbols_generator.GenerateSymbols();
 
-            for(std::size_t r = 0; r < rows; ++r)
+            for(std::size_t row = 0; row < rows; ++row)
             {
-                symbols[r * reels + c] = column_symbols[r];
+                symbols[row * reels + reel] = column_symbols[row];
             }
         }
 

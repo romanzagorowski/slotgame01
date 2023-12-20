@@ -2,7 +2,9 @@
 
 #include "BetLine.h"
 
-inline static const std::vector<BetLine> betlines{
+// The betlines definitions taken from the online game info screen.
+
+inline static const std::vector<BetLine> ___betlines{
     {   1,
         // . . . . .
         // + + + + +

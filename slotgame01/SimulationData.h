@@ -11,6 +11,8 @@
 #include <vector>
 #include <utility>
 
+// Gathers simulation data/outcome.
+
 class SimulationData
 {
 public:

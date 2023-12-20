@@ -11,47 +11,12 @@
 #include "ParseArgs.h"
 #include "SimulationData.h"
 
-#include "SymbolProbabilities07.h"
-using namespace SymbolProbabilities07;
+#include "SymbolProbabilities.h"
 
 #include <vector>
 #include <iostream>
 #include <string>
 #include <iomanip>
-
-/*
-inline std::ostream& operator << (std::ostream& os, const std::vector<int>& v)
-{
-    assert(15 == v.size());
-
-    for(std::size_t r = 0; r < 3; ++r)
-    {
-        for(std::size_t c = 0; c < 5; ++c)
-        {
-            os << v[r * 5 + c];
-        }
-        os << std::endl;
-    }
-
-    return os;
-
-    //os << "{ ";
-
-    //std::string sep = "";
-
-    //for(const auto& i : v)
-    //{
-    //    os << sep;
-
-    //    if(sep == "")
-    //        sep = ", ";
-
-    //    os << i;
-    //}
-
-    //return os << " }";
-}
-*/
 
 namespace
 {
@@ -88,7 +53,11 @@ void OutputSimulationReport(const SimulationData& data)
     {
         const double hit_count_percent = 100.0 * hit_count / total_betline_hit_count;
 
-        std::cout << "betline: " << std::setw(2) << betline << ", hit_count: " << hit_count << ", hit_count %: " << hit_count_percent << std::endl;
+        std::cout 
+            << "betline: " << std::setw(2) << betline 
+            << ", hit_count: " << hit_count 
+            << ", hit_count %: " << hit_count_percent 
+            << std::endl;
     }
 
     //--- symbol LENGTH hit count
@@ -174,9 +143,9 @@ void RunOneGameSimulation(const std::vector<int>& game_symbols)
 {
     SlotGameSimulator simulator{
         kGameReels, kGameRows,
-        betlines,
-        length_based_prizes,
-        count_based_prizes
+        ___betlines,
+        ___length_based_prizes,
+        ___count_based_prizes
     };
 
     GameSymbolsGenerator_Const generator{ game_symbols };
@@ -194,34 +163,45 @@ void RunMultipleGamesSimulation(
     const std::string& credit_out_file
 )
 {
+    // The game simulator with betlines and prizes defined.
+
     SlotGameSimulator simulator{
         kGameReels, kGameRows,
-        betlines,
-        length_based_prizes,
-        count_based_prizes
+        ___betlines,
+        ___length_based_prizes,
+        ___count_based_prizes
     };
 
-    FixedProbabilitySymbolGenerator sg1{ sp1 };
-    FixedProbabilitySymbolGenerator sg2{ sp2 };
-    FixedProbabilitySymbolGenerator sg3{ sp3 };
-    FixedProbabilitySymbolGenerator sg4{ sp4 };
-    FixedProbabilitySymbolGenerator sg5{ sp5 };
+    // Symbol generators.
+    // Each generator has its own symbol probability vector provided.
 
-    ReelSymbolsGenerator rg1{ kGameRows, sg1 };
-    ReelSymbolsGenerator rg2{ kGameRows, sg2 };
-    ReelSymbolsGenerator rg3{ kGameRows, sg3 };
-    ReelSymbolsGenerator rg4{ kGameRows, sg4 };
-    ReelSymbolsGenerator rg5{ kGameRows, sg5 };
+    FixedProbabilitySymbolGenerator sg1{ ___sp1 };
+    FixedProbabilitySymbolGenerator sg2{ ___sp2 };
+    FixedProbabilitySymbolGenerator sg3{ ___sp3 };
+    FixedProbabilitySymbolGenerator sg4{ ___sp4 };
+    FixedProbabilitySymbolGenerator sg5{ ___sp5 };
+
+    // Symbol generator for each reel (3 symbols).
+
+    ReelSymbolsGenerator rsg1{ kGameRows, sg1 };
+    ReelSymbolsGenerator rsg2{ kGameRows, sg2 };
+    ReelSymbolsGenerator rsg3{ kGameRows, sg3 };
+    ReelSymbolsGenerator rsg4{ kGameRows, sg4 };
+    ReelSymbolsGenerator rsg5{ kGameRows, sg5 };
+
+    // Game symbol generator (15 symbols) with separate generator for each reel.
 
     GameSymbolsGenerator_RSG5 generator{
         kGameReels, kGameRows,
-        { &rg1, &rg2, &rg3, &rg4, &rg5 }
+        { &rsg1, &rsg2, &rsg3, &rsg4, &rsg5 }
     };
 
+    // Gathers simulation data/outcome.
+
     SimulationData simulation_data{
-        betlines,
-        length_based_prizes,
-        count_based_prizes
+        ___betlines,
+        ___length_based_prizes,
+        ___count_based_prizes
     };
 
     simulator.RunMultipleGames(
@@ -235,11 +215,11 @@ void RunMultipleGamesSimulation(
 
 int main(int argc, char* argv[])
 {
-    int games_count{ 1000000 };
+    //int games_count{ 1000000 };
+    int games_count{ 9999999 };
     int start_credit{ 5000000 };
-    std::string credit_out_file{ "plik.txt" };  // TODO: Leave it empty!
+    std::string credit_out_file{};
     std::vector<int> symbols;
-    //std::vector<int> symbols{ 0,1,2,3,4,5,5,5,5,5,6,6,6,6,6 };
 
     const bool args_parsed = ParseArgs(
         argc, argv,

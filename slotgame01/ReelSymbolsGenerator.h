@@ -4,6 +4,9 @@
 
 #include <vector>
 
+// Generats symbols for a reel using provided SymbolGenerator.
+// Makes sure that 0 symbol appears no more that once.
+
 class ReelSymbolsGenerator
 {
 public:

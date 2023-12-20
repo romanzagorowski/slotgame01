@@ -14,7 +14,8 @@
 #include <utility>
 #include <map>
 
-// Co zapewnia, ze korona jest tylko na jednej rolce? Generator symboli dla rolki?
+// A slots game simulator.
+// Runs simulation of one game or multiple games.
 
 class SlotGameSimulator
 {
@@ -25,15 +26,68 @@ public:
         const std::vector<BetLine>& betlines,
         const std::vector<LengthBasedPrize>& length_based_prizes,
         const std::vector<CountBasedPrize>& count_based_prizes
-    );
+    ) :
+        reels{ reels },
+        rows{ rows },
+        betlines{ betlines },
+        length_based_prizes{ length_based_prizes },
+        count_based_prizes{ count_based_prizes },
+        lbp_checker{ length_based_prizes },
+        cbp_checker{ count_based_prizes }
+    {
+    }
 
-    void RunMultipleGames(int games_count, GameSymbolsGenerator& generator, SimulationData& data);
-    int RunOneGame(GameSymbolsGenerator& generator);
+    void RunMultipleGames(
+        int games_count,
+        GameSymbolsGenerator& generator,
+        SimulationData& data
+    )
+    {
+        for(int g = 0; g < games_count; ++g)
+        {
+            GameBoard board{
+                reels, rows,
+                generator.GenerateSymbols()
+            };
+
+            std::vector<LengthBasedPayout> length_based_payouts = lbp_checker.CheckBetLines(betlines, board);
+            std::vector<CountBasedPayout>  count_based_payouts = cbp_checker.CheckGameBoard(board);
+
+            data.ProcessGameOutcome(length_based_payouts, count_based_payouts);
+        }
+    }
+
+    int RunOneGame(
+        GameSymbolsGenerator& generator
+    )
+    {
+        GameBoard board{
+            reels, rows,
+            generator.GenerateSymbols()
+        };
+
+        std::vector<LengthBasedPayout> length_based_payouts = lbp_checker.CheckBetLines(betlines, board);
+        std::vector<CountBasedPayout>  count_based_payouts = cbp_checker.CheckGameBoard(board);
+
+        int total_payout = 0;
+
+        for(const auto& payout : length_based_payouts)
+        {
+            total_payout += payout.amount;
+        }
+
+        for(const auto& payout : count_based_payouts)
+        {
+            total_payout += payout.amount;
+        }
+
+        return total_payout;
+    }
 
 private:
 
-    int reels;
-    int rows;
+    const int reels;
+    const int rows;
 
     // -- input
 
@@ -45,12 +99,4 @@ private:
 
     LengthBasedPrizeChecker lbp_checker;
     CountBasedPrizeChecker cbp_checker;
-
-    // -- outcome
-
-    std::vector<LengthBasedPayout> length_based_payouts;
-    std::vector<CountBasedPayout>  count_based_payouts;
 };
-
-// Stake - stawka
-// Bet value - wartosc zakladu

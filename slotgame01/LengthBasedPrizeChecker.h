@@ -10,6 +10,8 @@
 #include <optional>
 #include <cassert>
 
+// Checks vector of length based prizes (fruits like) against a bet line(s).
+
 class LengthBasedPrizeChecker
 {
     std::map<std::pair<int, int>, int> map; // (symbol, length) -> prize

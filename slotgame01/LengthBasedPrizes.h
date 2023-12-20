@@ -4,7 +4,9 @@
 
 #include <vector>
 
-inline static const std::vector<LengthBasedPrize> length_based_prizes{
+// The length based prizes (fruits like) taken from the online game info screen.
+
+inline static const std::vector<LengthBasedPrize> ___length_based_prizes{
 
     { 1, 5, 1000 },
     { 1, 4,  250 },

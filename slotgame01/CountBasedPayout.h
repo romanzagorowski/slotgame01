@@ -2,6 +2,8 @@
 
 #include <ostream>
 
+// Represents outcome of CountBazePrize
+
 struct CountBasedPayout
 {
     int symbol;

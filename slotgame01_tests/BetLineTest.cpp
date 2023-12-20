@@ -43,9 +43,9 @@ protected:
 
 TEST_F(BetLineTest, GetSymbolsWorks) 
 {
-    for(std::size_t i = 0; i < std::size(betlines); ++i)
+    for(std::size_t i = 0; i < std::size(___betlines); ++i)
     {
-        const auto betline_symbols = betlines[i].GetSymbols(this->game_board);
+        const auto betline_symbols = ___betlines[i].GetSymbols(this->game_board);
 
         EXPECT_EQ(
             betline_symbols,

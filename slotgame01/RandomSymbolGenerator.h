@@ -3,6 +3,8 @@
 #include "SymbolGenerator.h"
 #include "StdRandomNumberGenerator.h"
 
+// Generates symbols using a standard random number generator.
+
 class RandomSymbolGenerator : public SymbolGenerator
 {
 public:

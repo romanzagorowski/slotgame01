@@ -2,6 +2,9 @@
 
 #include <ostream>
 
+// Repesents outcome of a length based prize.
+// Types with defined the ostream output operator are pretty printed in the gtest/gmock output.
+
 struct LengthBasedPayout
 {
     int symbol;

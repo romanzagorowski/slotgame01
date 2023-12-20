@@ -8,6 +8,12 @@
 #include <memory>
 #include <cassert>
 
+// Generates symbols with probabilities define in the vector.
+// Probabilities are define with accuracy to 1 decimal point as integers, so 100% is 1000.
+// An index of probability in the vector is the symbol number (0 - crown, 1 - cherries, 2 - lemon and so on).
+
+// For testing purpose, has a protected constructor that allows to provide an unique pointer to a random number generator (a mock for example).
+
 class FixedProbabilitySymbolGenerator : public SymbolGenerator
 {
 public:
@@ -49,7 +55,7 @@ public:
 
         assert(false);  // we shall never get here...
 
-        return -1;
+        return -1;  // some illegal symbol...
     }
 
 private:

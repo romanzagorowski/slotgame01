@@ -5,17 +5,34 @@
 
 // TODO: Write unit tests for these ParseXXXArg functions!
 
-bool ParseGamesCountArg(int argc, char* argv[], int& games_count);
+// Argument parsing routines.
 
-bool ParseStartCreditArg(int argc, char* argv[], int& start_credit);
+inline bool ParseGamesCountArg(int argc, char* argv[], int& games_count)
+{
+    return false;
+}
 
-bool ParseCreditOutFileArg(int argc, char* argv[], std::string& credit_out_file);
+inline bool ParseStartCreditArg(int argc, char* argv[], int& start_credit)
+{
+    return false;
+}
 
-bool ParseSymbolsArg(int argc, char* argv[], std::vector<int>& symbols);
+inline bool ParseCreditOutFileArg(int argc, char* argv[], std::string& credit_out_file)
+{
+    return false;
+}
 
-bool ParseArgs(int argc, char* argv[],
+inline bool ParseSymbolsArg(int argc, char* argv[], std::vector<int>& symbols)
+{
+    return false;
+}
+
+inline bool ParseArgs(int argc, char* argv[],
     int& games_count,
     int& start_credit,
     std::string& credit_out_file,
     std::vector<int>& symbols
-);
+)
+{
+    return true;
+}

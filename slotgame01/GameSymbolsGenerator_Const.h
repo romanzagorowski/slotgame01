@@ -4,6 +4,8 @@
 
 #include <vector>
 
+// The GameSymbolsGenerator that constantly returns the same symbols.
+
 class GameSymbolsGenerator_Const : public GameSymbolsGenerator
 {
 public:

@@ -4,6 +4,8 @@
 
 #include <random>
 
+// A random number generator that uses std library random number implementation.
+
 class StdRandomNumberGenerator : public RandomNumberGenerator
 {
 public:

@@ -12,6 +12,8 @@
 #include <optional>
 #include <algorithm>
 
+// Takes symbol count based prizes (Crown like) and checks its occurence against the Game Board.
+
 class CountBasedPrizeChecker
 {
     std::map<int, std::map<int, int>> map;  // symbol -> count -> prize
@@ -20,14 +22,14 @@ class CountBasedPrizeChecker
     {
         for(auto& prize : prizes)
         {
-            this->map[prize.symbol][prize.count] = prize.amount;
+            map[prize.symbol][prize.count] = prize.amount;
         }
     }
 
 public:
     CountBasedPrizeChecker(const std::vector<CountBasedPrize>& prizes)
     {
-        this->PopulateMap(prizes);
+        PopulateMap(prizes);
     }
 
 public:
@@ -39,7 +41,7 @@ public:
 
         const auto& board_symbols = board.GetSymbols();
 
-        for(const auto& [symbol, inner_map] : this->map)
+        for(const auto& [symbol, inner_map] : map)
         {
             const int symbol_count = static_cast<int>(
                 std::count(std::begin(board_symbols), std::end(board_symbols), symbol)

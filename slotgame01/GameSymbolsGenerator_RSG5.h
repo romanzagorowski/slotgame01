@@ -3,6 +3,8 @@
 #include "GameSymbolsGenerator.h"
 #include "ReelSymbolsGenerator.h"
 
+// The game symbols generator with a separate reel symbols generator for each reel.
+
 class GameSymbolsGenerator_RSG5 : public GameSymbolsGenerator
 {
 public:

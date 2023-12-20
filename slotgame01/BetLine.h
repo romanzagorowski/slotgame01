@@ -4,6 +4,10 @@
 
 #include <vector>
 
+// Represents a bet line.
+// The vector of pairs of ints defines points on the game board that belongs to the bet line.
+// The id is for identification purpose. The same as numbers in the online game info screen.
+
 class BetLine
 {
 public:
@@ -30,6 +34,6 @@ public:
     }
 
 private:
-    int id;
+    const int id;
     const std::vector<std::pair<int, int>> points;
 };

@@ -19,9 +19,9 @@ TEST(LengthBasedPrizeCheckerTest, HandlesNoPrizeGameBoard)
         }
     };
 
-    LengthBasedPrizeChecker checker{ length_based_prizes };
+    LengthBasedPrizeChecker checker{ ___length_based_prizes };
 
-    for(const auto& betline : betlines)
+    for(const auto& betline : ___betlines)
     {
         EXPECT_FALSE(checker.CheckBetLine(betline, board));
     }
@@ -38,9 +38,9 @@ TEST(LengthBasedPrizeCheckerTest, HandlesOnePrizeGameBoard)
         }
     };
 
-    LengthBasedPrizeChecker checker{ length_based_prizes };
+    LengthBasedPrizeChecker checker{ ___length_based_prizes };
 
-    auto payout = checker.CheckBetLine(betlines[0], board);
+    auto payout = checker.CheckBetLine(___betlines[0], board);
 
     ASSERT_TRUE(payout);
 
@@ -60,9 +60,9 @@ TEST(LengthBasedPrizeCheckerTest, HandlesPrizesOnMultipleBetLines)
         }
     };
 
-    LengthBasedPrizeChecker checker{ length_based_prizes };
+    LengthBasedPrizeChecker checker{ ___length_based_prizes };
 
-    auto payouts = checker.CheckBetLines(betlines, board);
+    auto payouts = checker.CheckBetLines(___betlines, board);
 
     ASSERT_EQ(4, payouts.size());
 

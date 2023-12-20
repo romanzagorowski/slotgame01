@@ -18,7 +18,7 @@ TEST(CountBasedPrizeCheckerTest, FindsTheBiggestSymbolSet)
     };
 
     CountBasedPrizeChecker checker{
-        count_based_prizes
+        ___count_based_prizes
     };
 
     const auto payouts = checker.CheckGameBoard(board);

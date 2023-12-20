@@ -4,29 +4,32 @@
 #include "RandomSymbolGenerator.h"
 #include "ReelSymbolsGenerator.h"
 
+// The GameSymbolsGenerator that generates symbols using random symbol (number) generator.
+// Not used in the project. Kept for ilustration purpose how the GameSymbolGenerator can be specialized.
+
 class GameSymbolsGenerator_Random : public GameSymbolsGenerator
 {
 public:
-    GameSymbolsGenerator_Random(int cols, int rows, int nof_symbols) :
-        cols{ cols },
+    GameSymbolsGenerator_Random(int reels, int rows, int nof_symbols) :
+        reels{ reels },
         rows{ rows },
         symbol_generator{ nof_symbols },
-        column_symbols_generator{ rows, symbol_generator }
+        reel_symbols_generator{ rows, symbol_generator }
     {
     }
 
 public:
     std::vector<int> GenerateSymbols() override
     {
-        std::vector<int> symbols(rows * cols, -1);
+        std::vector<int> symbols(rows * reels, -1);
 
-        for(std::size_t c = 0; c < cols; ++c)
+        for(std::size_t reel = 0; reel < reels; ++reel)
         {
-            const std::vector<int> column_symbols = column_symbols_generator.GenerateSymbols();
+            const std::vector<int> reel_symbols = reel_symbols_generator.GenerateSymbols();
 
-            for(std::size_t r = 0; r < rows; ++r)
+            for(std::size_t row = 0; row < rows; ++row)
             {
-                symbols[r * cols + c] = column_symbols[r];
+                symbols[row * reels + reel] = reel_symbols[row];
             }
         }
 
@@ -34,9 +37,9 @@ public:
     }
 
 private:
-    const int cols;
+    const int reels;
     const int rows;
 
     RandomSymbolGenerator symbol_generator;
-    ReelSymbolsGenerator column_symbols_generator;
+    ReelSymbolsGenerator reel_symbols_generator;
 };

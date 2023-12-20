@@ -129,8 +129,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ParseArgs.cpp" />
-    <ClCompile Include="SlotGameSimulator.cpp" />
     <ClCompile Include="LengthBasedPrizeChecker.h" />
   </ItemGroup>
   <ItemGroup>
@@ -158,14 +156,7 @@
     <ClInclude Include="SlotGameSimulator.h" />
     <ClInclude Include="BetLines.h" />
     <ClInclude Include="SymbolGenerator.h" />
-    <ClInclude Include="SymbolProbabilities00.h" />
-    <ClInclude Include="SymbolProbabilities01.h" />
-    <ClInclude Include="SymbolProbabilities02.h" />
-    <ClInclude Include="SymbolProbabilities03.h" />
-    <ClInclude Include="SymbolProbabilities04.h" />
-    <ClInclude Include="SymbolProbabilities05.h" />
-    <ClInclude Include="SymbolProbabilities06.h" />
-    <ClInclude Include="SymbolProbabilities07.h" />
+    <ClInclude Include="SymbolProbabilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
