@@ -27,7 +27,7 @@ class LengthBasedPrizeChecker
 public:
     LengthBasedPrizeChecker(const std::vector<LengthBasedPrize>& prizes)
     {
-        this->PopulateMap(prizes);
+        PopulateMap(prizes);
     }
 
 public:
@@ -76,7 +76,7 @@ private:
     {
         int prefix_length = 0;
 
-        for(; prefix_length < symbols.size() && symbols[prefix_length] == symbol; ++prefix_length);
+        for(; prefix_length < static_cast<int>(symbols.size()) && symbols[prefix_length] == symbol; ++prefix_length);
 
         return prefix_length;
     }

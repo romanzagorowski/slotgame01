@@ -25,11 +25,11 @@ namespace
 
 // Forward declarations
 
-void OutputBalanceHistory(const std::vector<int>& balance_history, const std::string& output_file);
-void OutputSimulationReport(const SimulationData& data);
-void RunOneGameSimulation(const std::vector<int>& game_symbols);
-void RunMultipleGamesSimulation(int games_count, int start_credit, const std::string& credit_out_file);
-void PrintUsage(const char* argv0);
+static void OutputBalanceHistory(const std::vector<int>& balance_history, const std::string& output_file);
+static void OutputSimulationReport(const SimulationData& data);
+static void RunOneGameSimulation(const std::vector<int>& game_symbols);
+static void RunMultipleGamesSimulation(int games_count, int start_credit, const std::string& credit_out_file);
+static void PrintUsage(const char* argv0);
 
 int main(int argc, char* argv[])
 {

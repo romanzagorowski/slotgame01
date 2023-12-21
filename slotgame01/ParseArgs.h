@@ -132,7 +132,7 @@ inline bool ParseSymbolsArg(int argc, char* argv[], std::vector<int>& symbols)
         return false;
     }
 
-    for(int i = 0; i < s.size(); i += 2)
+    for(std::size_t i = 0; i < s.size(); i += 2)
     {
         symbols.push_back(s[i] - '0');
     }

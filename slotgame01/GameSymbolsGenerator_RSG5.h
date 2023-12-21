@@ -20,11 +20,11 @@ public:
     {
         std::vector<int> symbols(rows * reels, -1);
 
-        for(std::size_t reel = 0; reel < reels; ++reel)
+        for(int reel = 0; reel < reels; ++reel)
         {
             const std::vector<int> column_symbols = reel_symbols_generators[reel]->GenerateSymbols();
 
-            for(std::size_t row = 0; row < rows; ++row)
+            for(int row = 0; row < rows; ++row)
             {
                 symbols[row * reels + reel] = column_symbols[row];
             }

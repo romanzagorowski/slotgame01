@@ -17,7 +17,7 @@ public:
     }
 
 public:
-    int GetSymbolAt(std::size_t col, std::size_t row) const
+    int GetSymbolAt(int col, int row) const
     {
         assert(col < cols);
         assert(row < rows);
