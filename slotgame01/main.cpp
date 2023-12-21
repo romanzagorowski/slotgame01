@@ -29,15 +29,16 @@ void OutputBalanceHistory(const std::vector<int>& balance_history, const std::st
 void OutputSimulationReport(const SimulationData& data);
 void RunOneGameSimulation(const std::vector<int>& game_symbols);
 void RunMultipleGamesSimulation(int games_count, int start_credit, const std::string& credit_out_file);
+void PrintUsage(const char* argv0);
 
 int main(int argc, char* argv[])
 {
-    int games_count{ 100000 };      // defaults to   100 000
-    int start_credit{ 5000000 };    // defaults to 5 000 000
+    int games_count{ 0 };
+    int start_credit{ 5000000 };
     std::string credit_out_file{};
     std::vector<int> symbols;
 
-    const bool args_parsed = ParseArgs(
+    ParseArgs(
         argc, argv,
         games_count,
         start_credit,
@@ -45,8 +46,10 @@ int main(int argc, char* argv[])
         symbols
     );
 
-    if(!args_parsed)
+    if(games_count == 0 && symbols.empty())
     {
+        PrintUsage(argv[0]);
+
         return -1;
     }
 
@@ -63,6 +66,13 @@ int main(int argc, char* argv[])
 }
 
 static
+void PrintUsage(const char* argv0)
+{
+    std::cout << "Usage: " << argv0 << " -gamesCount 100000 [-startCredit 5000000] [-creditOutFile plik.txt]" << std::endl;
+    std::cout << "       " << argv0 << " -symbols 0,1,2,3,4,5,5,5,5,5,6,6,6,6,6" << std::endl;
+}
+
+static
 void OutputBalanceHistory(const std::vector<int>& balance_history, const std::string& output_file)
 {
     std::ofstream stream{ output_file };
@@ -70,7 +80,7 @@ void OutputBalanceHistory(const std::vector<int>& balance_history, const std::st
     if(!stream)
     {
         std::cerr << "ERROR: Failed to open file '" << output_file << "' for writing." << std::endl;
-        
+
         return;
     }
 
