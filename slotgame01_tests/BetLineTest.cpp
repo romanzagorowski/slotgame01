@@ -41,11 +41,13 @@ protected:
     };
 };
 
+// Tests if BetLine.GetSymbols() method returns appropriate symbols.
+
 TEST_F(BetLineTest, GetSymbolsWorks) 
 {
     for(std::size_t i = 0; i < std::size(___betlines); ++i)
     {
-        const auto betline_symbols = ___betlines[i].GetSymbols(this->game_board);
+        const auto betline_symbols = ___betlines[i].GetSymbols(game_board);
 
         EXPECT_EQ(
             betline_symbols,
