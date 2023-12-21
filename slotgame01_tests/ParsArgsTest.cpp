@@ -69,5 +69,3 @@ TEST_F(ParseArgsTest, ParsesArgs)
     EXPECT_EQ(expected_credit_out_file, credit_out_file);
     EXPECT_EQ(expected_symbols, symbols);
 }
-
-// TODO: Write negative tests here like: FailesToParseGamesCount, and so on.
