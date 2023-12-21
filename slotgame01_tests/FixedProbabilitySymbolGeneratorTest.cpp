@@ -11,6 +11,8 @@ public:
 
 using namespace ::testing;
 
+// Derive from testable class to have access to its protected constructor.
+
 class FixedProbabilitySymbolGeneratorTestable : public FixedProbabilitySymbolGenerator
 {
 public:
@@ -23,24 +25,27 @@ public:
     }
 };
 
-TEST(FixedProbabilitySymbolGeneratorTest, SomeTest)
+// Checks if for a series of sudo random numbers
+// the symbol generator generates appropriate symbols.
+
+TEST(FixedProbabilitySymbolGeneratorTest, CheckGeneratedSymbols)
 {
     std::unique_ptr<RandomNumberGeneratorMock> rng_mock{ std::make_unique<RandomNumberGeneratorMock>() };
 
     EXPECT_CALL(*rng_mock, Generate())
-        .WillOnce(Return(990))   // 4
-        .WillOnce(Return(510))   // 2
-        .WillOnce(Return(290))   // 0
-        .WillOnce(Return(880))   // 3
+        .WillOnce(Return(990))   // 99.0% -> 4
+        .WillOnce(Return(515))   // 51.5% -> 2
+        .WillOnce(Return(290))   // 29.0% -> 0
+        .WillOnce(Return(880))   // 88.0% -> 3
         ;
 
     FixedProbabilitySymbolGeneratorTestable generator{
         { 
-            300, //  1 -  30
-            100, // 31 -  40
-            400, // 41 -  80
-            100, // 81 -  90
-            100  // 91 - 100
+            300, //  1.0 -  30.0 -> 0
+            100, // 31.0 -  40.0 -> 1
+            400, // 41.0 -  80.0 -> 2
+            100, // 81.0 -  90.0 -> 3
+            100  // 91.0 - 100.0 -> 4
         },
         std::move(rng_mock)
     };
